@@ -10,5 +10,6 @@ const needed = [
 for (const name of needed) {
   if (!si[name]) {
     console.log(`Missing: ${name}`);
+
   }
 }
