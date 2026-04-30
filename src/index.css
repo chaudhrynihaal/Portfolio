@@ -335,9 +335,7 @@ body {
 
 /* ── Cards shared ────────────────────────────── */
 .project-card,
-.experience-list article,
-.contact-info,
-.contact-form {
+.experience-list article {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -391,70 +389,105 @@ body {
   gap: 16px;
 }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+/* ── Buffalo-Style Contact Section ──────────────────────────── */
+.contact-buffalo {
+  text-align: center;
+  padding: 100px 70px;
 }
 
-.contact-form {
-  display: grid;
-  gap: 10px;
+.contact-buffalo h3 {
+  font-size: 64px;
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: var(--text-main);
 }
 
-.contact-form h4 {
-  margin: 0;
-  font-size: 22px;
-}
-
-.contact-form p {
-  margin: 0 0 4px;
+.contact-subtitle {
   color: var(--text-muted);
-  line-height: 1.5;
+  font-size: 18px;
+  margin: 0 auto 80px;
+  max-width: 600px;
 }
 
-.contact-item {
+.contact-channels {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.contact-channel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.channel-icon-circle {
+  width: 140px;
+  height: 140px;
+  background: #d9d9d9;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
-  border: 1px solid var(--chip-border);
-  border-radius: 10px;
-  margin-bottom: 10px;
+  justify-content: center;
+  font-size: 48px;
+  color: white;
+  margin-bottom: 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.channel-icon-circle:hover {
+  transform: translateY(-5px);
+  background: #cccccc;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+.channel-label {
+  color: #ff6b6b;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.channel-link {
   color: var(--text-main);
   text-decoration: none;
-  background: var(--card-bg);
+  font-size: 15px;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid transparent;
 }
 
-.contact-item:hover {
-  border-color: #ccd8ff;
-  background: rgba(125, 156, 255, 0.1);
+.channel-link:hover {
+  opacity: 1;
+  border-bottom: 1px solid #4daafc;
 }
 
-.contact-action {
-  width: 100%;
-  justify-content: flex-start;
-  gap: 8px;
+/* Dark mode adjustments */
+[data-theme='dark'] .channel-icon-circle {
+  background: #24314a;
+}
+[data-theme='dark'] .channel-icon-circle:hover {
+  background: #2d3d5c;
 }
 
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 12px;
-  font: inherit;
+[data-theme='dark'] .channel-label {
+  color: #ff8e8e;
 }
 
 footer {
   text-align: center;
-  padding: 40px 20px;
+  padding: 60px 20px;
   color: var(--text-muted);
+  border-top: 1px solid var(--border);
 }
 
 @media (max-width: 980px) {
-  .hero-section,
-  .contact-grid {
+  .hero-section {
     grid-template-columns: 1fr;
   }
 
@@ -464,7 +497,8 @@ footer {
   }
 
   .hero-copy h1,
-  .section h3 {
+  .section h3,
+  .contact-buffalo h3 {
     font-size: 42px;
   }
 }
@@ -484,8 +518,9 @@ footer {
 
   .hero-section,
   .section,
-  .stats {
-    padding: 24px 18px;
+  .stats,
+  .contact-buffalo {
+    padding: 40px 18px;
   }
 
   .skills-grid,
@@ -495,5 +530,15 @@ footer {
 
   .profile-circle {
     width: 260px;
+  }
+
+  .contact-channels {
+    gap: 40px;
+  }
+
+  .channel-icon-circle {
+    width: 100px;
+    height: 100px;
+    font-size: 32px;
   }
 }

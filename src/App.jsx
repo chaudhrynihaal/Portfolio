@@ -294,54 +294,32 @@ function App() {
         </div>
       </section>
 
-      <section id="contact" className="section contact">
-        <h3>Let&apos;s Work Together</h3>
-        <p className="section-subtitle">
-          Ready to launch your next AI or automation project? Reach out through any channel below.
-        </p>
-        <div className="contact-grid">
-          <div className="contact-info">
-            <a href="mailto:nihaalsif5@gmail.com" className="contact-item">
-              <FaEnvelope size={20} />
-              <span>nihaalsif5@gmail.com</span>
-            </a>
-            <a href="https://linkedin.com/in/nihaalasif" target="_blank" rel="noreferrer" className="contact-item">
-              <FaLinkedin size={20} />
-              <span>linkedin.com/in/nihaalasif</span>
-            </a>
-            <div className="contact-item">
-              <FaLocationDot size={20} />
-              <span>Lahore, Pakistan (Remote friendly)</span>
+      <section id="contact" className="section contact-buffalo">
+        <div className="contact-header">
+          <h3>Contact Nihaal</h3>
+          <p className="contact-subtitle">Get in touch with me to get the ball rolling</p>
+        </div>
+        <div className="contact-channels">
+          <div className="contact-channel">
+            <div className="channel-icon-circle">
+              <FaEnvelope />
             </div>
+            <div className="channel-label">EMAIL</div>
+            <a href="mailto:nihaalsif5@gmail.com" className="channel-link">nihaalsif5@gmail.com</a>
           </div>
-          <div className="contact-form">
-            <h4>Start a Conversation</h4>
-            <p>
-              I usually reply within 24 hours. Share your goals and I can suggest a practical
-              implementation plan.
-            </p>
-            <a
-              className="primary-btn"
-              href="mailto:nihaalsif5@gmail.com?subject=Project%20Inquiry&body=Hi%20Muhammad%20Nihaal%2C%20I%20want%20to%20discuss%20a%20project."
-            >
-              <FaEnvelope size={16} /> Send Email
-            </a>
-            <a
-              className="ghost-btn contact-action"
-              href="https://linkedin.com/in/nihaalasif"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaLinkedin size={16} /> Message on LinkedIn
-            </a>
-            <a
-              className="ghost-btn contact-action"
-              href={`https://github.com/${githubUsername}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaGithub size={16} /> View GitHub Portfolio
-            </a>
+          <div className="contact-channel">
+            <div className="channel-icon-circle">
+              <FaLinkedin />
+            </div>
+            <div className="channel-label">LINKEDIN</div>
+            <a href="https://linkedin.com/in/nihaalasif" target="_blank" rel="noreferrer" className="channel-link">Connect with me</a>
+          </div>
+          <div className="contact-channel">
+            <div className="channel-icon-circle">
+              <FaGithub />
+            </div>
+            <div className="channel-label">GITHUB</div>
+            <a href={`https://github.com/${githubUsername}`} target="_blank" rel="noreferrer" className="channel-link">View my profile</a>
           </div>
         </div>
       </section>
