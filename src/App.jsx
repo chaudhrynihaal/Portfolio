@@ -294,24 +294,28 @@ function App() {
         </div>
       </section>
 
-      <section id="contact" className="section contact-sleek">
-        <div className="contact-card">
-          <div className="social-header">
-            <span className="social-title">FOLLOW MY JOURNEY</span>
-            <div className="social-icons">
-              <a href="mailto:nihaalsif5@gmail.com" className="social-circle" title="Email">
-                <FaEnvelope />
-              </a>
-              <a href="https://linkedin.com/in/nihaalasif" target="_blank" rel="noreferrer" className="social-circle" title="LinkedIn">
-                <FaLinkedin />
-              </a>
-              <a href={`https://github.com/${githubUsername}`} target="_blank" rel="noreferrer" className="social-circle" title="GitHub">
-                <FaGithub />
-              </a>
-            </div>
+      <section id="contact" className="section contact-horizontal">
+        <div className="contact-info-col">
+          <h3>Let&apos;s Build Something Together</h3>
+          <p>
+            Ready to automate your workflows or build an AI-powered product? 
+            Reach out and I&apos;ll get back to you within 24 hours.
+          </p>
+          <div className="contact-socials-minimal">
+            <a href="mailto:nihaalsif5@gmail.com" title="Email">
+              <FaEnvelope size={18} /> <span>nihaalsif5@gmail.com</span>
+            </a>
+            <a href="https://linkedin.com/in/nihaalasif" target="_blank" rel="noreferrer" title="LinkedIn">
+              <FaLinkedin size={18} /> <span>LinkedIn Profile</span>
+            </a>
+            <a href={`https://github.com/${githubUsername}`} target="_blank" rel="noreferrer" title="GitHub">
+              <FaGithub size={18} /> <span>GitHub Portfolio</span>
+            </a>
           </div>
+        </div>
 
-          <form className="sleek-form" onSubmit={(e) => e.preventDefault()}>
+        <div className="contact-form-col">
+          <form className="horizontal-form" onSubmit={(e) => e.preventDefault()}>
             <div className="form-group">
               <label>Full Name</label>
               <div className="input-wrapper">
@@ -328,31 +332,18 @@ function App() {
               </div>
             </div>
 
-            <div className="form-row">
-              <div className="form-group">
-                <label>Select Service</label>
-                <div className="input-wrapper">
-                  <FaBriefcase className="input-icon" />
-                  <select>
-                    <option>AI Automation</option>
-                    <option>Web Development</option>
-                    <option>Custom Dashboard</option>
-                    <option>Workflow Optimization</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="form-group">
-                <label>Project Budget</label>
-                <div className="input-wrapper">
-                  <FaMoneyBillWave className="input-icon" />
-                  <select>
-                    <option>$1k - $5k</option>
-                    <option>$5k - $10k</option>
-                    <option>$10k - $20k</option>
-                    <option>$20k+</option>
-                  </select>
-                </div>
+            <div className="form-group">
+              <label>Select Service</label>
+              <div className="input-wrapper">
+                <FaBriefcase className="input-icon" />
+                <select>
+                  <option>AI Automation</option>
+                  <option>Web Development</option>
+                  <option>Custom Dashboard</option>
+                  <option>Workflow Optimization</option>
+                  <option>Others</option>
+                  <option>Prefer a call</option>
+                </select>
               </div>
             </div>
 
@@ -372,7 +363,7 @@ function App() {
               </div>
             </div>
 
-            <button type="submit" className="submit-btn">
+            <button type="submit" className="submit-btn-horizontal">
               Send Message <FaArrowRight />
             </button>
           </form>
