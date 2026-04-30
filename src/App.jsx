@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { FaEnvelope, FaGithub, FaLinkedin, FaLocationDot, FaRobot, FaNetworkWired, FaDatabase, FaAws, FaMicrosoft, FaCode } from 'react-icons/fa6'
+import { FaEnvelope, FaGithub, FaLinkedin, FaLocationDot, FaRobot, FaNetworkWired, FaDatabase, FaAws, FaMicrosoft, FaCode, FaUser, FaBriefcase, FaMoneyBillWave, FaCommentAlt, FaPaperPlane, FaArrowRight } from 'react-icons/fa6'
 import { WiMoonAltWaningCrescent3, WiDaySunny } from 'react-icons/wi'
 import {
   SiPython, SiJavascript, SiCplusplus, SiR,
@@ -294,33 +294,88 @@ function App() {
         </div>
       </section>
 
-      <section id="contact" className="section contact-buffalo">
-        <div className="contact-header">
-          <h3>Contact Nihaal</h3>
-          <p className="contact-subtitle">Get in touch with me to get the ball rolling</p>
-        </div>
-        <div className="contact-channels">
-          <div className="contact-channel">
-            <div className="channel-icon-circle">
-              <FaEnvelope />
+      <section id="contact" className="section contact-sleek">
+        <div className="contact-card">
+          <div className="social-header">
+            <span className="social-title">FOLLOW MY JOURNEY</span>
+            <div className="social-icons">
+              <a href="mailto:nihaalsif5@gmail.com" className="social-circle" title="Email">
+                <FaEnvelope />
+              </a>
+              <a href="https://linkedin.com/in/nihaalasif" target="_blank" rel="noreferrer" className="social-circle" title="LinkedIn">
+                <FaLinkedin />
+              </a>
+              <a href={`https://github.com/${githubUsername}`} target="_blank" rel="noreferrer" className="social-circle" title="GitHub">
+                <FaGithub />
+              </a>
             </div>
-            <div className="channel-label">EMAIL</div>
-            <a href="mailto:nihaalsif5@gmail.com" className="channel-link">nihaalsif5@gmail.com</a>
           </div>
-          <div className="contact-channel">
-            <div className="channel-icon-circle">
-              <FaLinkedin />
+
+          <form className="sleek-form" onSubmit={(e) => e.preventDefault()}>
+            <div className="form-group">
+              <label>Full Name</label>
+              <div className="input-wrapper">
+                <FaUser className="input-icon" />
+                <input type="text" placeholder="John Doe" />
+              </div>
             </div>
-            <div className="channel-label">LINKEDIN</div>
-            <a href="https://linkedin.com/in/nihaalasif" target="_blank" rel="noreferrer" className="channel-link">Connect with me</a>
-          </div>
-          <div className="contact-channel">
-            <div className="channel-icon-circle">
-              <FaGithub />
+
+            <div className="form-group">
+              <label>Email Address</label>
+              <div className="input-wrapper">
+                <FaEnvelope className="input-icon" />
+                <input type="email" placeholder="john@company.com" />
+              </div>
             </div>
-            <div className="channel-label">GITHUB</div>
-            <a href={`https://github.com/${githubUsername}`} target="_blank" rel="noreferrer" className="channel-link">View my profile</a>
-          </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label>Select Service</label>
+                <div className="input-wrapper">
+                  <FaBriefcase className="input-icon" />
+                  <select>
+                    <option>AI Automation</option>
+                    <option>Web Development</option>
+                    <option>Custom Dashboard</option>
+                    <option>Workflow Optimization</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label>Project Budget</label>
+                <div className="input-wrapper">
+                  <FaMoneyBillWave className="input-icon" />
+                  <select>
+                    <option>$1k - $5k</option>
+                    <option>$5k - $10k</option>
+                    <option>$10k - $20k</option>
+                    <option>$20k+</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label>Subject</label>
+              <div className="input-wrapper">
+                <FaCommentAlt className="input-icon" />
+                <input type="text" placeholder="Project inquiry" />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label>Message</label>
+              <div className="input-wrapper textarea-wrapper">
+                <FaPaperPlane className="input-icon" />
+                <textarea placeholder="Tell me about your project goals..."></textarea>
+              </div>
+            </div>
+
+            <button type="submit" className="submit-btn">
+              Send Message <FaArrowRight />
+            </button>
+          </form>
         </div>
       </section>
 
