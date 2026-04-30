@@ -371,9 +371,18 @@ function App() {
       </section>
 
       <footer>
-        <p>Muhammad Nihaal</p>
-        <p>AI &amp; Automation Engineer | Full-Stack Developer | Freelance Partner</p>
-        <p>© 2026 Muhammad Nihaal. All rights reserved.</p>
+        <div className="footer-content">
+          <div className="footer-brand">Muhammad Nihaal</div>
+          <p className="footer-tagline">AI &amp; Automation Engineer | Solo Technical Partner</p>
+          <div className="footer-socials">
+            <a href="mailto:nihaalsif5@gmail.com" title="Email"><FaEnvelope size={18} /></a>
+            <a href="https://linkedin.com/in/nihaalasif" target="_blank" rel="noreferrer" title="LinkedIn"><FaLinkedin size={18} /></a>
+            <a href={`https://github.com/${githubUsername}`} target="_blank" rel="noreferrer" title="GitHub"><FaGithub size={18} /></a>
+          </div>
+          <div className="footer-bottom">
+            <p>© 2026 Muhammad Nihaal. All rights reserved.</p>
+          </div>
+        </div>
       </footer>
     </div>
   )
