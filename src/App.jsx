@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { FaEnvelope, FaGithub, FaLinkedin, FaLocationDot, FaRobot, FaNetworkWired, FaDatabase, FaAws, FaMicrosoft, FaCode, FaUser, FaBriefcase, FaMoneyBillWave, FaCommentAlt, FaPaperPlane, FaArrowRight } from 'react-icons/fa6'
+import { FaEnvelope, FaGithub, FaLinkedin, FaLocationDot, FaRobot, FaNetworkWired, FaDatabase, FaAws, FaMicrosoft, FaCode, FaUser, FaBriefcase, FaMoneyBillWave, FaMessage, FaPaperPlane, FaArrowRight } from 'react-icons/fa6'
 import { WiMoonAltWaningCrescent3, WiDaySunny } from 'react-icons/wi'
 import {
   SiPython, SiJavascript, SiCplusplus, SiR,
@@ -359,7 +359,7 @@ function App() {
             <div className="form-group">
               <label>Subject</label>
               <div className="input-wrapper">
-                <FaCommentAlt className="input-icon" />
+                <FaMessage className="input-icon" />
                 <input type="text" placeholder="Project inquiry" />
               </div>
             </div>
