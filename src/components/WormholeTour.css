@@ -63,6 +63,12 @@ img {
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .wormhole-header {
+    padding: 16px 20px;
+  }
+}
+
 
 .brand {
   font-family: var(--font-display);
@@ -98,6 +104,28 @@ img {
   background: var(--accent);
   color: #000;
   box-shadow: 0 0 28px var(--accent-glow);
+}
+
+@media (max-width: 768px) {
+  .exit-btn {
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+
+  .tour-rocket {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .exit-btn {
+    padding: 8px 14px;
+    font-size: 11px;
+  }
+
+  .tour-rocket {
+    font-size: 12px;
+  }
 }
 
 
@@ -144,6 +172,20 @@ img {
   border-color: rgba(255, 255, 255, 0.2);
 }
 
+@media (max-width: 768px) {
+  .skip-btn {
+    padding: 8px 16px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skip-btn {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+}
+
 .close-btn {
   width: 42px;
   height: 42px;
@@ -164,6 +206,14 @@ img {
   background: rgba(255, 255, 255, 0.14);
 }
 
+@media (max-width: 480px) {
+  .close-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+}
+
 /* ── LANDING VIEW ────────────────────────── */
 .landing-view {
   position: fixed;
@@ -176,6 +226,12 @@ img {
   align-items: center;
   text-align: center;
   padding: 40px;
+}
+
+@media (max-width: 768px) {
+  .landing-view {
+    padding: 20px;
+  }
 }
 
 .landing-content {
@@ -193,6 +249,12 @@ img {
   color: white;
   line-height: 0.9;
   text-transform: uppercase;
+}
+
+@media (max-width: 480px) {
+  .landing-name {
+    font-size: clamp(40px, 10vw, 70px);
+  }
 }
 
 .landing-role {
@@ -224,6 +286,21 @@ img {
   box-shadow: 0 10px 50px rgba(255, 255, 255, 0.4);
 }
 
+@media (max-width: 768px) {
+  .launch-btn {
+    padding: 14px 28px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .launch-btn {
+    padding: 12px 20px;
+    font-size: 12px;
+    gap: 8px;
+  }
+}
+
 .landing-footer {
   position: absolute;
   bottom: 60px;
@@ -243,6 +320,26 @@ img {
 .landing-socials a:hover {
   color: white;
   transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .landing-socials {
+    gap: 20px;
+  }
+
+  .landing-socials a {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-socials {
+    gap: 16px;
+  }
+
+  .landing-socials a {
+    font-size: 14px;
+  }
 }
 
 /* ── FLOATING NODES (3D UI) ──────────────── */
@@ -584,6 +681,53 @@ img {
   background: rgba(2, 8, 23, 0.55);
   backdrop-filter: blur(36px) saturate(1.4);
   animation: modalIn 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.modal-back-btn {
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  z-index: 210;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  backdrop-filter: blur(8px);
+}
+
+.modal-back-btn:hover {
+  background: var(--accent);
+  color: #000;
+  box-shadow: 0 0 28px var(--accent-glow);
+  transform: translateX(-3px);
+}
+
+@media (max-width: 768px) {
+  .modal-back-btn {
+    width: 42px;
+    height: 42px;
+    top: 20px;
+    left: 20px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-back-btn {
+    width: 36px;
+    height: 36px;
+    top: 16px;
+    left: 16px;
+    font-size: 14px;
+  }
 }
 
 @keyframes modalIn {

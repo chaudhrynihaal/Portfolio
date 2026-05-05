@@ -270,6 +270,9 @@ export default function WormholeTour({ onExit }) {
 
       {activeStep && (
         <div className="modal" key={activeStep}>
+          <button className="modal-back-btn" onClick={() => setActiveStep(null)} title="Back to tour">
+            <FaChevronLeft />
+          </button>
           <div className="modal-body">
             <section className="section-projects">
               <h1>{activeStep.replace(/-/g, ' ')}</h1>

@@ -79,6 +79,12 @@ img {
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .header {
+    padding: 16px 20px;
+  }
+}
+
 .brand {
   font-family: var(--font-display);
   font-size: 22px;
@@ -119,6 +125,28 @@ img {
 
 .tour-rocket {
   font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .tour-btn {
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+
+  .tour-rocket {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tour-btn {
+    padding: 8px 14px;
+    font-size: 11px;
+  }
+
+  .tour-rocket {
+    font-size: 12px;
+  }
 }
 
 @keyframes pulse-border {
@@ -180,6 +208,14 @@ img {
   background: rgba(255, 255, 255, 0.14);
 }
 
+@media (max-width: 480px) {
+  .close-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+}
+
 /* ── LANDING VIEW ────────────────────────── */
 .landing-view {
   position: fixed;
@@ -192,6 +228,12 @@ img {
   align-items: center;
   text-align: center;
   padding: 40px;
+}
+
+@media (max-width: 768px) {
+  .landing-view {
+    padding: 20px;
+  }
 }
 
 .landing-content {
@@ -209,6 +251,12 @@ img {
   color: white;
   line-height: 0.9;
   text-transform: uppercase;
+}
+
+@media (max-width: 480px) {
+  .landing-name {
+    font-size: clamp(40px, 10vw, 70px);
+  }
 }
 
 .landing-role {
@@ -240,6 +288,21 @@ img {
   box-shadow: 0 10px 50px rgba(255, 255, 255, 0.4);
 }
 
+@media (max-width: 768px) {
+  .launch-btn {
+    padding: 14px 28px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .launch-btn {
+    padding: 12px 20px;
+    font-size: 12px;
+    gap: 8px;
+  }
+}
+
 .landing-footer {
   position: absolute;
   bottom: 60px;
@@ -259,6 +322,26 @@ img {
 .landing-socials a:hover {
   color: white;
   transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .landing-socials {
+    gap: 20px;
+  }
+
+  .landing-socials a {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-socials {
+    gap: 16px;
+  }
+
+  .landing-socials a {
+    font-size: 14px;
+  }
 }
 
 /* ── FLOATING NODES (3D UI) ──────────────── */
