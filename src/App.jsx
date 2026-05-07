@@ -97,7 +97,7 @@ function App() {
     [],
   )
   const featuredProjectOrder = useMemo(
-    () => ['hostel-finder', 'med-fast-AI-detection', 'stock-prediction-LSTM-RNN', 'n8n'],
+    () => ['hostel-finder', 'med-fast-AI-detection', 'stock-prediction-LSTM-RNN', 'n8n', 'lead-generation-agent'],
     [],
   )
   const projectCovers = useMemo(
@@ -106,6 +106,7 @@ function App() {
       'med-fast-AI-detection': '/project-covers/med-fast-AI-detection.png',
       'stock-prediction-LSTM-RNN': '/project-covers/stock-prediction-LSTM-RNN.png',
       n8n: '/project-covers/n8n.png',
+      'lead-generation-agent': '/project-covers/lead-generation-agent.png',
     }),
     [],
   )

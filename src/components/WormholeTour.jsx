@@ -6,12 +6,13 @@ import * as THREE from 'three'
 import './WormholeTour.css'
 
 const GITHUB  = 'chaudhrynihaal'
-const FEATURED = ['hostel-finder', 'med-fast-AI-detection', 'stock-prediction-LSTM-RNN', 'n8n']
+const FEATURED = ['hostel-finder', 'med-fast-AI-detection', 'stock-prediction-LSTM-RNN', 'n8n', 'lead-generation-agent']
 const COVERS  = {
   'hostel-finder':              '/project-covers/hostel-finder.png',
   'med-fast-AI-detection':      '/project-covers/med-fast-AI-detection.png',
   'stock-prediction-LSTM-RNN':  '/project-covers/stock-prediction-LSTM-RNN.png',
   'n8n':                        '/project-covers/n8n.png',
+  'lead-generation-agent':      '/project-covers/lead-generation-agent.png',
 }
 
 // ── WORMHOLE BACKGROUND ────────────────────────────
@@ -241,7 +242,8 @@ export default function WormholeTour({ onExit }) {
               [4, 2, -30],
               [-5, -1, -70],
               [4.5, -2.5, -110],
-              [-3.5, 3.5, -150]
+              [-3.5, 3.5, -150],
+              [3, -3, -190]
             ]
             const pos = [...basePositions[i]]
             pos[2] -= depthIdx * 150
