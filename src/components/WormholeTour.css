@@ -18,6 +18,122 @@
   --radius-pill: 999px;
 }
 
+/* ── CINEMATIC OVERLAYS ──────────────────────────── */
+
+/* Letterbox bars — top & bottom */
+.cin-bars {
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+}
+.cin-bars::before,
+.cin-bars::after {
+  content: '';
+  position: fixed;
+  left: 0; right: 0;
+  height: 48px;
+  background: #000;
+}
+.cin-bars::before { top: 0; }
+.cin-bars::after  { bottom: 0; }
+
+/* Edge vignette */
+.cin-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  background: radial-gradient(ellipse at 50% 50%,
+    transparent 38%,
+    rgba(0,0,0,0.45) 75%,
+    rgba(0,0,0,0.82) 100%
+  );
+  pointer-events: none;
+}
+
+/* Subtle film scanlines */
+.cin-scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 6;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.022) 3px,
+    rgba(0,0,0,0.022) 6px
+  );
+  pointer-events: none;
+}
+
+/* Hyperspace flash on entry */
+.cin-warpflash {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 50%,
+    rgba(255,255,255,0.95) 0%,
+    rgba(56,189,248,0.55) 40%,
+    rgba(56,189,248,0.1) 70%,
+    transparent 100%
+  );
+  animation: cin-warp 2.1s ease-out forwards;
+}
+@keyframes cin-warp {
+  0%   { opacity: 0; }
+  8%   { opacity: 1; }
+  35%  { opacity: 0.45; }
+  70%  { opacity: 0.12; }
+  100% { opacity: 0; }
+}
+
+/* HUD */
+.cin-hud {
+  position: fixed;
+  bottom: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+  pointer-events: none;
+}
+.cin-hud-visible { opacity: 1; }
+
+.cin-hud-line {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  color: rgba(255,255,255,0.4);
+  animation: cin-hud-pulse 3.5s ease-in-out infinite;
+}
+.cin-hud-sub {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  opacity: 0.45;
+  text-transform: uppercase;
+}
+@keyframes cin-hud-pulse {
+  0%, 100% { opacity: 0.25; }
+  50%       { opacity: 0.75; }
+}
+
+/* Header hides during warp */
+.wormhole-header {
+  transition: opacity 0.7s ease;
+}
+.wormhole-header.wh-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* ── WORMHOLE STYLES ─────────────────────────────── */
 /* Tokens are inherited from main css or redefined for the component */
 
@@ -671,23 +787,50 @@ img {
   line-height: 1.5;
 }
 
-/* ── MODAL ───────────────────────────────── */
+/* ── MODAL — single viewport, no scroll ─────── */
 .modal {
   position: fixed;
   inset: 0;
   z-index: 200;
   display: flex;
   flex-direction: column;
-  background: rgba(2, 8, 23, 0.55);
-  backdrop-filter: blur(36px) saturate(1.4);
-  animation: modalIn 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  background: rgba(2, 8, 23, 0.82);
+  backdrop-filter: blur(48px) saturate(1.6);
+  overflow: hidden;
+  animation: modalIn 0.45s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Top bar ── */
+.modal-topbar {
+  display: flex;
+  align-items: center;
+  padding: 20px 32px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-project-title {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.5vw, 32px);
+  font-weight: 800;
+  text-transform: capitalize;
+  letter-spacing: -0.5px;
+  color: white;
+}
+
+.modal-topbar-spacer {
+  width: 48px;
+  flex-shrink: 0;
 }
 
 .modal-back-btn {
-  position: absolute;
-  top: 28px;
-  left: 28px;
-  z-index: 210;
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -699,87 +842,45 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s;
-  backdrop-filter: blur(8px);
+  transition: all 0.25s;
+  flex-shrink: 0;
 }
-
 .modal-back-btn:hover {
   background: var(--accent);
   color: #000;
-  box-shadow: 0 0 28px var(--accent-glow);
-  transform: translateX(-3px);
+  box-shadow: 0 0 24px var(--accent-glow);
+  transform: translateX(-2px);
 }
 
-@media (max-width: 768px) {
-  .modal-back-btn {
-    width: 42px;
-    height: 42px;
-    top: 20px;
-    left: 20px;
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .modal-back-btn {
-    width: 36px;
-    height: 36px;
-    top: 16px;
-    left: 16px;
-    font-size: 14px;
-  }
-}
-
-@keyframes modalIn {
-  from {
-    opacity: 0;
-    transform: scale(0.93) translateY(18px);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-.modal-body {
+/* ── Two-column viewport ── */
+.modal-viewport {
   flex: 1;
-  overflow-y: auto;
-  padding: 110px 64px 20px;
-  max-width: 1080px;
-  width: 100%;
-  margin: 0 auto;
-  /* hide scrollbar but keep function */
-  scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
-}
-
-/* ── PROJECT MODAL ── */
-.proj-modal-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  margin-top: 40px;
-  text-align: left;
+  padding: 32px 56px 40px;
+  min-height: 0;
 }
 
-.proj-large-img {
+.modal-cover {
   width: 100%;
-  height: 350px;
-  border-radius: 24px;
-  background: center/cover no-repeat;
+  height: 100%;
+  min-height: 0;
+  border-radius: 20px;
+  background: center / cover no-repeat;
   border: 1px solid var(--border);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
 }
 
-.proj-details {
+.modal-details {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  justify-content: center;
+  gap: 28px;
 }
 
 .proj-desc-long {
-  font-size: 18px;
+  font-size: clamp(14px, 1.4vw, 18px);
   line-height: 1.8;
   color: var(--muted);
 }
@@ -797,7 +898,7 @@ img {
 
 .p-stat strong {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: clamp(20px, 2vw, 28px);
   color: white;
 }
 
@@ -822,27 +923,22 @@ img {
   gap: 10px;
   width: fit-content;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.25s;
 }
-
 .proj-cta-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 30px var(--accent-glow);
 }
 
-@media (max-width: 900px) {
-  .proj-modal-content {
+@media (max-width: 768px) {
+  .modal-viewport {
     grid-template-columns: 1fr;
+    padding: 20px 24px 32px;
+    gap: 20px;
+    overflow-y: auto;
   }
-}
-
-.modal-body::-webkit-scrollbar {
-  width: 4px;
-}
-
-.modal-body::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 4px;
+  .modal-cover { height: 220px; }
+  .modal-topbar { padding: 16px 20px; }
 }
 
 /* ── HERO SECTION ────────────────────────── */
