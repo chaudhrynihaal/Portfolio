@@ -2,6 +2,11 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { FaEnvelope, FaGithub, FaLinkedin, FaLocationDot, FaRobot, FaNetworkWired, FaDatabase, FaAws, FaMicrosoft, FaCode, FaUser, FaBriefcase, FaMoneyBillWave, FaMessage, FaPaperPlane, FaArrowRight } from 'react-icons/fa6'
 import { WiMoonAltWaningCrescent3, WiDaySunny } from 'react-icons/wi'
 import WormholeTour from './components/WormholeTour'
+import SkillsOrbit from './components/SkillsOrbit'
+import './components/SkillsOrbit.css'
+import StackingCaseStudies from './components/StackingCaseStudies'
+import './components/StackingCaseStudies.css'
+import { caseStudies } from './data/caseStudies'
 import {
   SiPython, SiJavascript, SiCplusplus, SiR,
   SiN8N, SiZapier, SiTensorflow, SiKeras, SiPytorch,
@@ -79,8 +84,6 @@ const allSkills = skillCategories.flatMap((cat) => cat.skills)
 
 function App() {
   const [profile, setProfile] = useState(null)
-  const [repos, setRepos] = useState([])
-  const [repoError, setRepoError] = useState('')
   const [isJourneyLaunched, setIsJourneyLaunched] = useState(false)
   const [formStatus, setFormStatus] = useState('idle') // 'idle' | 'submitting' | 'success' | 'error'
 
@@ -96,55 +99,21 @@ function App() {
     () => import.meta.env.VITE_GITHUB_USERNAME || 'chaudhrynihaal',
     [],
   )
-  const featuredProjectOrder = useMemo(
-    () => ['hostel-finder', 'med-fast-AI-detection', 'stock-prediction-LSTM-RNN', 'n8n', 'lead-generation-agent', 'zf-apparel'],
-    [],
-  )
-  const projectCovers = useMemo(
-    () => ({
-      'hostel-finder': '/project-covers/hostel-finder.png',
-      'med-fast-AI-detection': '/project-covers/med-fast-AI-detection.png',
-      'stock-prediction-LSTM-RNN': '/project-covers/stock-prediction-LSTM-RNN.png',
-      n8n: '/project-covers/n8n.png',
-      'lead-generation-agent': '/project-covers/lead-generation-agent.png',
-      'zf-apparel': '/project-covers/zf-apparel.png',
-    }),
-    [],
-  )
 
   useEffect(() => {
     const controller = new AbortController()
 
-    Promise.all([
-      fetch(`https://api.github.com/users/${githubUsername}`, {
-        signal: controller.signal,
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Unable to fetch profile details.')
-          }
-          return response.json()
-        }),
-      fetch(
-        `https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=100`,
-        { signal: controller.signal },
-      ).then((response) => {
+    fetch(`https://api.github.com/users/${githubUsername}`, {
+      signal: controller.signal,
+    })
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Unable to fetch repositories.')
+          throw new Error('Unable to fetch profile details.')
         }
         return response.json()
       })
-    ])
-      .then(([profileData, repoData]) => {
-        setProfile(profileData)
-        const sorted = [...repoData].sort((a, b) => b.stargazers_count - a.stargazers_count)
-        setRepos(sorted)
-      })
-      .catch((error) => {
-        if (error.name !== 'AbortError') {
-          setRepoError('Could not load GitHub repositories right now.')
-        }
-      })
+      .then(setProfile)
+      .catch(() => {})
 
     return () => controller.abort()
   }, [githubUsername])
@@ -153,15 +122,6 @@ function App() {
     document.documentElement.setAttribute('data-theme', theme)
     localStorage.setItem('portfolio-theme', theme)
   }, [theme])
-
-
-
-  const featuredRepos = useMemo(() => {
-    const byName = new Map(repos.map((repo) => [repo.name, repo]))
-    return featuredProjectOrder
-      .map((name) => byName.get(name))
-      .filter(Boolean)
-  }, [featuredProjectOrder, repos])
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -204,7 +164,7 @@ function App() {
         <nav>
           <a href="#home">Home</a>
           <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
+          <a href="#case-studies">Case Studies</a>
           <a href="#experience">Experience</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -238,7 +198,7 @@ function App() {
             >
               View GitHub
             </a>
-            <a className="ghost-btn" href="#projects">View My Work</a>
+            <a className="ghost-btn" href="#case-studies">View My Work</a>
           </div>
           <div className="socials">
             <a href={`https://github.com/${githubUsername}`} target="_blank" rel="noreferrer"><FaGithub size={16} /> GitHub</a>
@@ -266,70 +226,37 @@ function App() {
           Comprehensive expertise across modern development stack with focus on scalable
           web applications and DevOps practices.
         </p>
-        <div className="skills-marquee-outer">
-          <div className="skills-marquee-track">
-            {[...allSkills, ...allSkills].map((sk, i) => (
-              <span key={i} className="marquee-skill">
-                <span className="marquee-icon">{sk.icon}</span>
-                <span className="marquee-label">{sk.label}</span>
-              </span>
-            ))}
-          </div>
-        </div>
+        <SkillsOrbit skills={allSkills} />
       </section>
 
-      <section id="projects" className="section">
-        <h3>Featured Projects</h3>
-        <p className="section-subtitle">Selected flagship projects with custom cover art.</p>
-        {repoError && <p className="notice">{repoError}</p>}
+      <div style={{ display: 'flex', justifyContent: 'center', padding: '0 0 68px' }}>
+        <button
+          onClick={() => setIsJourneyLaunched(true)}
+          style={{
+            background: 'linear-gradient(45deg, var(--accent), #c084fc)',
+            color: 'black',
+            border: 'none',
+            padding: '16px 40px',
+            borderRadius: '40px',
+            fontSize: '16px',
+            fontWeight: '800',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            cursor: 'pointer',
+            boxShadow: '0 10px 30px rgba(56, 189, 248, 0.4)',
+            transition: 'transform 0.3s ease'
+          }}
+          onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+          onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+        >
+          Launch 3D Journey <FaArrowRight />
+        </button>
+      </div>
 
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px' }}>
-          <button
-            onClick={() => setIsJourneyLaunched(true)}
-            style={{
-              background: 'linear-gradient(45deg, var(--accent), #c084fc)',
-              color: 'black',
-              border: 'none',
-              padding: '16px 40px',
-              borderRadius: '40px',
-              fontSize: '16px',
-              fontWeight: '800',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              cursor: 'pointer',
-              boxShadow: '0 10px 30px rgba(56, 189, 248, 0.4)',
-              transition: 'transform 0.3s ease'
-            }}
-            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
-          >
-            Launch 3D Journey <FaArrowRight />
-          </button>
-        </div>
-
-        <div className="projects-grid">
-          {featuredRepos.map((repo) => (
-            <a
-              key={repo.id}
-              className="project-card"
-              href={repo.html_url}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img
-                className="project-image"
-                src={projectCovers[repo.name]}
-                alt={repo.name}
-                loading="lazy"
-              />
-              <h4>{repo.name}</h4>
-              <p>{repo.description || 'No description provided.'}</p>
-              <small>Stars: {repo.stargazers_count} | Language: {repo.language || 'N/A'}</small>
-            </a>
-          ))}
-        </div>
-      </section>
+      <div id="case-studies">
+        <StackingCaseStudies cases={caseStudies} />
+      </div>
 
       <section id="experience" className="section">
         <h3>Professional Experience</h3>

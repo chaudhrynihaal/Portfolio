@@ -1,0 +1,386 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap');
+
+/* ── Intro / Outro ─────────────────────────────── */
+.stack-intro,
+.stack-outro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+  padding: 90px 20px;
+  color: #f3f0ff;
+  background: #08050f;
+}
+
+.stack-intro h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 44px);
+  margin: 4px 0;
+}
+
+.stack-intro p {
+  color: rgba(243, 240, 255, 0.6);
+  margin: 0 0 18px;
+}
+
+.stack-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(196, 161, 255, 0.85);
+}
+
+.stack-scroll-cue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: rgba(243, 240, 255, 0.55);
+  animation: stack-bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes stack-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.stack-outro {
+  gap: 16px;
+}
+
+.stack-outro p {
+  font-size: 20px;
+  margin: 0;
+  color: rgba(243, 240, 255, 0.85);
+}
+
+.stack-outro a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #f3f0ff;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 12px 26px;
+  border-radius: 999px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.stack-outro a:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.stack-outro a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* ── Stack track ─────────────────────────────── */
+.stack-track {
+  position: relative;
+  background: #08050f;
+}
+
+.stack-card {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  padding: 24px 70px;
+}
+
+.stack-card-surface {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+}
+
+.stack-card-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.stack-card-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(24px, 5vw, 72px);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.22), transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stack-card-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 40px;
+  height: 100%;
+  padding: 0 clamp(24px, 5vw, 72px);
+}
+
+.stack-card-copy {
+  color: #f3f0ff;
+}
+
+.stack-card-copy h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3vw, 38px);
+  line-height: 1.15;
+  margin: 10px 0 14px;
+}
+
+.stack-card-copy p {
+  color: rgba(243, 240, 255, 0.7);
+  line-height: 1.6;
+  max-width: 460px;
+  margin: 0 0 20px;
+}
+
+.stack-card-stats {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stack-card-stats li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(243, 240, 255, 0.85);
+}
+
+.stack-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  background: var(--stack-accent, #fff);
+  color: #08050f;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.stack-card-cta:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.stack-card-cta:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.stack-card-device {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stack-card-media {
+  width: min(420px, 100%);
+  max-height: min(72vh, 640px);
+  border-radius: 16px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  background: #000;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .stack-card-media {
+    max-height: 50vh;
+  }
+}
+
+.stack-card-logo-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(320px, 100%);
+  padding: 48px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+.stack-card-logo {
+  max-width: 100%;
+  max-height: 140px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ── Device mockups ─────────────────────────────── */
+.device-screen-ui {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  height: 100%;
+}
+
+.device-screen-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.device-screen-bar > span:first-child {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.device-screen-bar-track {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.device-screen-hero {
+  flex: 1;
+  border-radius: 12px;
+  border: 1px solid;
+}
+
+.device-screen-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  height: 60px;
+}
+
+.device-screen-grid div {
+  border-radius: 8px;
+}
+
+.device-phone {
+  width: clamp(170px, 20vw, 220px);
+  height: clamp(340px, 42vw, 440px);
+  background: #0c0c10;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 34px;
+  position: relative;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.device-phone-notch {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 46%;
+  height: 18px;
+  background: #0c0c10;
+  border-radius: 999px;
+  z-index: 2;
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 900px) {
+  /* Content routinely exceeds the viewport on small screens, which would
+     break the sticky-cover trick (a card taller than the viewport can't
+     fully vacate before the next one starts covering it). Keep the card
+     itself pinned to the viewport height and let its content scroll
+     internally instead, so the stacking effect still works. */
+  .stack-card {
+    height: 100vh;
+    height: 100dvh;
+    padding: 16px 20px;
+  }
+
+  .stack-card-label {
+    height: 56px;
+    padding: 0 20px;
+  }
+
+  .stack-card-inner {
+    grid-template-columns: 1fr;
+    padding: 72px 24px 24px;
+    gap: 20px;
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    align-content: start;
+  }
+
+  .stack-card-copy p {
+    max-width: 100%;
+  }
+
+  .stack-card-device {
+    order: -1;
+    transform: scale(0.85);
+  }
+}
+
+/* ── Reduced motion: drop the sticky-cover trick entirely ─── */
+@media (prefers-reduced-motion: reduce) {
+  .stack-card {
+    position: relative;
+    top: auto !important;
+    height: auto;
+    min-height: 0;
+    padding: 16px 70px;
+  }
+
+  .stack-card-label {
+    display: none;
+  }
+
+  .stack-scroll-cue {
+    animation: none;
+  }
+}
+
+/* ── Progressive-enhancement recede effect (Chrome scroll-timelines) ─── */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .stack-card-surface {
+      animation: stack-recede linear both;
+      animation-timeline: view();
+      animation-range: cover 35% cover 100%;
+    }
+
+    @keyframes stack-recede {
+      to {
+        transform: scale(0.94);
+        filter: brightness(0.6);
+      }
+    }
+  }
+}

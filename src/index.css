@@ -18,14 +18,14 @@
 }
 
 :root[data-theme='dark'] {
-  --bg-page: #0f172a;
-  --bg-surface: #111827;
-  --text-main: #eef2ff;
-  --text-muted: #b8c0d4;
-  --border: #24314a;
-  --card-bg: #182235;
-  --chip-bg: #1e293b;
-  --chip-border: #324765;
+  --bg-page: #08050f;
+  --bg-surface: #0c0817;
+  --text-main: #f3f0ff;
+  --text-muted: #a89fc2;
+  --border: #211a35;
+  --card-bg: #120d1f;
+  --chip-bg: #150f24;
+  --chip-border: #2a2140;
   --accent: #1d4ed8;
   --accent-text: #f8fbff;
   --gold-border: #f4b860;
@@ -43,20 +43,9 @@ body {
 }
 
 #root {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   background: var(--bg-surface);
-  border-left: 1px solid var(--border);
-  border-right: 1px solid var(--border);
-  transition: background 0.3s ease, border-color 0.3s ease;
-}
-
-@media (max-width: 768px) {
-  #root {
-    max-width: 100%;
-    border-left: none;
-    border-right: none;
-  }
+  transition: background 0.3s ease;
 }
 
 .page {
@@ -423,114 +412,13 @@ body {
   }
 }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-@media (max-width: 1024px) {
-  .projects-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-}
-
-@media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-}
-
-/* ── Skills Marquee ──────────────────────────── */
+/* ── Skills Orbit ──────────────────────────── */
 .skills-section {
   padding-bottom: 52px;
-}
-
-.skills-marquee-outer {
-  position: relative;
-  overflow: hidden;
-  background: #0d0d0d;
-  border-radius: 14px;
-  padding: 22px 0;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
-  );
-}
-
-.skills-marquee-outer:hover .skills-marquee-track {
-  animation-play-state: paused;
-}
-
-.skills-marquee-track {
-  display: flex;
-  gap: 0;
-  width: max-content;
-  animation: marquee-scroll 28s linear infinite;
-}
-
-@keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-.marquee-skill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0 36px;
-  white-space: nowrap;
-  color: rgba(255, 255, 255, 0.65);
-  border-right: 1px solid rgba(255,255,255,0.08);
-  transition: color 0.2s ease;
-}
-
-.marquee-skill:hover {
-  color: rgba(255, 255, 255, 0.95);
-}
-
-@media (max-width: 768px) {
-  .marquee-skill {
-    padding: 0 24px;
-    gap: 8px;
-  }
-
-  .marquee-icon {
-    font-size: 20px;
-  }
-
-  .marquee-label {
-    font-size: 12px;
-  }
-}
-
-.marquee-icon {
-  display: inline-flex;
-  align-items: center;
-  font-size: 28px;
-  flex-shrink: 0;
-}
-
-.marquee-label {
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  border-bottom: none;
 }
 
 /* ── Cards shared ────────────────────────────── */
-.project-card,
 .experience-list article {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -538,61 +426,10 @@ body {
   padding: 20px;
 }
 
-.project-card {
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.project-card h4 {
-  margin: 0 0 10px;
-}
-
-.project-card p {
-  margin: 0;
-  color: var(--text-muted);
-  line-height: 1.55;
-}
-
-.project-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(15, 23, 42, 0.08);
-}
-
 @media (max-width: 768px) {
-  .project-card,
   .experience-list article {
     padding: 16px;
   }
-
-  .project-card h4 {
-    font-size: 16px;
-  }
-
-  .project-card p {
-    font-size: 13px;
-  }
-}
-
-.project-image {
-  height: 160px;
-  border-radius: 10px;
-  width: 100%;
-  object-fit: cover;
-  border: 1px solid var(--chip-border);
-  margin-bottom: 12px;
-}
-
-.project-card small {
-  display: block;
-  margin-top: 10px;
-  color: var(--text-muted);
-}
-
-.notice {
-  text-align: center;
-  color: #a04d00;
-  margin-bottom: 22px;
 }
 
 .experience-list {
