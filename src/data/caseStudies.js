@@ -1,5 +1,22 @@
 export const caseStudies = [
   {
+    id: 'fintrack',
+    eyebrow: 'FINTRACK • 2026',
+    title: 'A private personal finance tracker for iOS',
+    description:
+      'A quietly capable ledger for one — transactions, debts between friends, category budgets, and bank alerts, distilled into a single private view of where the money goes.',
+    stats: [
+      'Native iOS bottom sheets throughout',
+      'Push notifications for bank transaction alerts',
+      'Budgets that flag overspending as it happens',
+    ],
+    href: 'https://github.com/chaudhrynihaal/Fintrack',
+    video: '/case-studies/fintrack.mp4',
+    portrait: true,
+    accent: '#0F9D8C',
+    gradient: 'linear-gradient(155deg, #0d2620 0%, #081a15 65%, #04100c 100%)',
+  },
+  {
     id: 'cammi',
     eyebrow: 'CAMMI • 2026',
     title: 'An AI-powered marketing automation platform',

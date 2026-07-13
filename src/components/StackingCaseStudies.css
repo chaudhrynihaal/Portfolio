@@ -221,6 +221,138 @@
   }
 }
 
+/* ── Phone emulator frame (portrait app screenshots/recordings) ──
+   A real device chassis — bezel, notch, side buttons, home indicator —
+   around the screen content. The screen box is locked to the source
+   media's own aspect ratio so it fills edge to edge with no cropping
+   or letterbox bars. */
+.phone-emulator {
+  position: relative;
+  width: min(260px, 68%);
+  aspect-ratio: 720 / 1560;
+  background: linear-gradient(155deg, #1c1c1f 0%, #0a0a0c 100%);
+  border-radius: 54px;
+  padding: 14px;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.phone-emulator-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  overflow: hidden;
+  background: #000;
+}
+
+.phone-emulator-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.phone-emulator-notch {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32%;
+  height: 22px;
+  background: #050506;
+  border-radius: 999px;
+  z-index: 3;
+}
+
+.phone-emulator-home-indicator {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+  z-index: 3;
+}
+
+.phone-emulator-button {
+  position: absolute;
+  background: #16161a;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.phone-emulator-button--mute {
+  left: -2px;
+  top: 78px;
+  width: 3px;
+  height: 22px;
+  border-radius: 2px 0 0 2px;
+}
+
+.phone-emulator-button--vol-up {
+  left: -2px;
+  top: 116px;
+  width: 3px;
+  height: 40px;
+  border-radius: 2px 0 0 2px;
+}
+
+.phone-emulator-button--vol-down {
+  left: -2px;
+  top: 164px;
+  width: 3px;
+  height: 40px;
+  border-radius: 2px 0 0 2px;
+}
+
+.phone-emulator-button--power {
+  right: -2px;
+  top: 130px;
+  width: 3px;
+  height: 56px;
+  border-radius: 0 2px 2px 0;
+}
+
+@media (max-width: 900px) {
+  .phone-emulator {
+    width: min(210px, 62%);
+    border-radius: 42px;
+    padding: 11px;
+  }
+
+  .phone-emulator-screen {
+    border-radius: 31px;
+  }
+
+  .phone-emulator-notch {
+    width: 30%;
+    height: 18px;
+  }
+
+  .phone-emulator-button--mute {
+    top: 62px;
+    height: 18px;
+  }
+
+  .phone-emulator-button--vol-up {
+    top: 92px;
+    height: 32px;
+  }
+
+  .phone-emulator-button--vol-down {
+    top: 130px;
+    height: 32px;
+  }
+
+  .phone-emulator-button--power {
+    top: 104px;
+    height: 44px;
+  }
+}
+
 .stack-card-logo-panel {
   display: flex;
   align-items: center;

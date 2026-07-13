@@ -22,6 +22,22 @@ function DeviceMockup({ accent }) {
   )
 }
 
+function PhoneEmulatorFrame({ children }) {
+  return (
+    <div className="phone-emulator">
+      <span className="phone-emulator-button phone-emulator-button--mute" />
+      <span className="phone-emulator-button phone-emulator-button--vol-up" />
+      <span className="phone-emulator-button phone-emulator-button--vol-down" />
+      <span className="phone-emulator-button phone-emulator-button--power" />
+      <div className="phone-emulator-screen">
+        {children}
+        <div className="phone-emulator-notch" />
+        <div className="phone-emulator-home-indicator" />
+      </div>
+    </div>
+  )
+}
+
 function StackingCaseStudies({ cases }) {
   return (
     <div className="stacking-case-studies">
@@ -80,15 +96,16 @@ function StackingCaseStudies({ cases }) {
                   </a>
                 </div>
                 <div className="stack-card-device">
-                  {item.video ? (
-                    <video
-                      className="stack-card-media"
-                      src={item.video}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                    />
+                  {item.portrait && item.video ? (
+                    <PhoneEmulatorFrame>
+                      <video className="phone-emulator-media" src={item.video} autoPlay muted loop playsInline />
+                    </PhoneEmulatorFrame>
+                  ) : item.portrait && item.image ? (
+                    <PhoneEmulatorFrame>
+                      <img className="phone-emulator-media" src={item.image} alt="" />
+                    </PhoneEmulatorFrame>
+                  ) : item.video ? (
+                    <video className="stack-card-media" src={item.video} autoPlay muted loop playsInline />
                   ) : item.image ? (
                     <img className="stack-card-media" src={item.image} alt="" />
                   ) : item.logo ? (
