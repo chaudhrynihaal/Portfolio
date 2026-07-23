@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react'
 import { FaArrowDown, FaArrowRight, FaCheck } from 'react-icons/fa6'
 
 const CARD_PEEK = 64
+const CAROUSEL_INTERVAL_MS = 2400
 
 function DeviceMockup({ accent }) {
   return (
@@ -18,6 +20,32 @@ function DeviceMockup({ accent }) {
           <div style={{ background: `${accent}1f` }} />
         </div>
       </div>
+    </div>
+  )
+}
+
+function ImageCarousel({ images }) {
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    if (images.length < 2) return
+    const timer = setInterval(() => {
+      setIndex((i) => (i + 1) % images.length)
+    }, CAROUSEL_INTERVAL_MS)
+    return () => clearInterval(timer)
+  }, [images.length])
+
+  return (
+    <div className="phone-emulator-carousel">
+      {images.map((src, i) => (
+        <img
+          key={src}
+          className="phone-emulator-media phone-emulator-carousel-slide"
+          style={{ opacity: i === index ? 1 : 0 }}
+          src={src}
+          alt=""
+        />
+      ))}
     </div>
   )
 }
@@ -99,6 +127,10 @@ function StackingCaseStudies({ cases }) {
                   {item.portrait && item.video ? (
                     <PhoneEmulatorFrame>
                       <video className="phone-emulator-media" src={item.video} autoPlay muted loop playsInline />
+                    </PhoneEmulatorFrame>
+                  ) : item.portrait && item.images?.length ? (
+                    <PhoneEmulatorFrame>
+                      <ImageCarousel images={item.images} />
                     </PhoneEmulatorFrame>
                   ) : item.portrait && item.image ? (
                     <PhoneEmulatorFrame>

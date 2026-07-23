@@ -1,5 +1,28 @@
 export const caseStudies = [
   {
+    id: 'elara',
+    eyebrow: 'ELARA • 2026',
+    title: 'A three-mode period, pregnancy & perimenopause tracker',
+    description:
+      'Standard cycle, pregnancy, and perimenopause tracking in one app — ovulation and fertile-window prediction, BBT-based ovulation confirmation, due-date and gestational-age calculations, plus a gamified pet companion system with achievements and leveling to keep tracking consistent.',
+    stats: [
+      'Standard, Pregnancy & Perimenopause modes',
+      'Ovulation, fertile-window & due-date prediction',
+      '15-pet gamified companion system',
+    ],
+    href: 'https://github.com/chaudhrynihaal/elara-periods-tracker',
+    images: [
+      '/case-studies/elara-dashboard.png',
+      '/case-studies/elara-log-symptoms.png',
+      '/case-studies/elara-log-advanced.png',
+      '/case-studies/elara-pregnancy.png',
+      '/case-studies/elara-achievements.png',
+    ],
+    portrait: true,
+    accent: '#E91E63',
+    gradient: 'linear-gradient(155deg, #3a0f22 0%, #210817 65%, #120309 100%)',
+  },
+  {
     id: 'fintrack',
     eyebrow: 'FINTRACK • 2026',
     title: 'A private personal finance tracker for iOS',
