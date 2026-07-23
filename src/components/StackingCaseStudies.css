@@ -254,20 +254,6 @@
   display: block;
 }
 
-.phone-emulator-carousel {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.phone-emulator-carousel-slide {
-  position: absolute;
-  inset: 0;
-  object-fit: cover;
-  object-position: top center;
-  transition: opacity 0.6s ease;
-}
-
 .phone-emulator-notch {
   position: absolute;
   top: 10px;
