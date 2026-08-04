@@ -34,6 +34,24 @@ export const caseStudies = [
     gradient: 'linear-gradient(155deg, #0d2620 0%, #081a15 65%, #04100c 100%)',
   },
   {
+    id: 'everafter',
+    eyebrow: 'EVERAFTER • 2026',
+    title: 'An all-in-one wedding planning companion for iOS',
+    description:
+      'From engagement to "I do" — checklist and vendor-linked budget tracking, drag-and-drop seating charts, an AI wedding assistant, and guest-facing video and photo booths guests use straight from their own phone\'s camera, no app install required.',
+    stats: [
+      'AI wedding assistant & disagreement mediator',
+      'Guest video guestbook & photo booth via QR — zero installs',
+      'AR venue mockups, vendor-linked budgets, seating charts',
+    ],
+    href: '#',
+    ctaLabel: 'Coming Soon',
+    image: '/case-studies/everafter.png',
+    portrait: true,
+    accent: '#B76E79',
+    gradient: 'linear-gradient(155deg, #3a1620 0%, #1f0f14 65%, #0d0708 100%)',
+  },
+  {
     id: 'cammi',
     eyebrow: 'CAMMI • 2026',
     title: 'An AI-powered marketing automation platform',
