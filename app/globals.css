@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #151312;
+  --color-field: #1f1d1c;
+  --color-fog: #998f8f;
+  --color-dim: #2a2827;
+  --color-orange: #f46c38;
+  --color-lime: #c5ff41;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+}
+
+html { color-scheme: dark; scroll-behavior: smooth; }
+body { @apply bg-ink text-white font-sans antialiased; }
+
+/* Two-tone display heading: first line white, second line dim */
+.display { @apply font-bold uppercase leading-[0.95] tracking-tight; font-size: clamp(3rem, 7vw, 5.6rem); }
+.display span { @apply block text-dim; }
+
+.arrow { @apply text-orange transition-transform duration-200; }
+.group:hover .arrow { @apply -translate-y-0.5 translate-x-0.5; }
+
+.label { @apply mb-2 block text-sm text-fog; }
+.field { @apply w-full rounded-lg bg-field px-4 py-3.5 text-white placeholder:text-fog focus:outline-none focus:ring-1 focus:ring-orange; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
